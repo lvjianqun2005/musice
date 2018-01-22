@@ -19,6 +19,7 @@ export default{
 </script>
 
 <style>
+@import './../../common/stylus/icon.styl';
 .user-center{
   position: fixed;
   top: 0;
