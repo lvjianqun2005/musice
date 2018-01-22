@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <user-conter></user-conter>
+    <user-center></user-center>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import UserConter from './components/user-conter/user-conter'
+import UserCenter from './components/user-center/user-center'
 export default {
   name: 'App',
   components: {
-    UserConter
+    UserCenter
   }
 }
 </script>
