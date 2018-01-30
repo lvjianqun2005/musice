@@ -1,15 +1,19 @@
 <template>
-  <div id="app">
-    <user-center></user-center>
+  <div id="app" @touchmove.prevent>
+    <m-header></m-header>
+    <tap></tap>
+    <router-view></router-view>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import UserCenter from './components/user-center/user-center'
+import MHeader from './components/m-header/m-header'
+import Tap from './components/tap/tap'
 export default {
   name: 'App',
   components: {
-    UserCenter
+    MHeader,
+    Tap
   }
 }
 </script>

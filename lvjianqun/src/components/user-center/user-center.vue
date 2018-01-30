@@ -1,25 +1,45 @@
 <template>
   <transition name="slide">
-    <div class="user-center">
-      <div class="back" @click="back">
+    <div clasxlass="back" @click="back">
           <i class="icon-back"></i>
-      </div>
+    </div>
+    <div class="switches-wrapper">
+      <switches @switch="switchItem" :switches="switches" :currentIndex="currentIndex"></switches>
     </div>
   </transition>
 </template>
 <script type="text/ecmascript-6">
+import Switches from './../../base/switches/switches'
 export default{
   name: 'UserCenter',
+  data () {
+    return {
+      currentIndex: 0,
+      switches: [
+        {
+          name: '我喜欢的'
+        },
+        {
+          name: '最近听的'
+        }
+      ]
+    }
+  },
   methods: {
     back () {
+       this.$router.back()
+    },
+    switchItem () {
       console.log('nihao')
     }
+  },
+  components: {
+    Switches
   }
 }
 </script>
 
-<style>
-@import './../../common/stylus/icon.styl';
+<style scoped lang="stylus" rel="stylesheet/stylus">
 .user-center{
   position: fixed;
   top: 0;

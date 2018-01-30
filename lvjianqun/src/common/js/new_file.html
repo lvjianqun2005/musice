@@ -1,0 +1,44 @@
+<!DOCTYLE html>
+<html>
+<head>
+    <meta charset="uft-8" />
+</head>
+<body>
+</body>
+</html>
+<script>
+//  var json1 = {name :'jack',age : 25,gender : 'male' }
+//  for (attr in json1) {
+//      console.log(attr);//name,age,gender
+//      console.log(json1[attr]);//jack,25,male
+//      console.log(typeof json1[attr]);
+//  }
+
+
+
+
+//var data={"weatherinfo":
+//			{"city":"北京","cityid":"101110101","temp":"20","WD":"西城区","WS":"1绾�","SD":"14%","WSE":"1","time":"17:00","isRadar":"1","Radar":"JC_RADAR_AZ9290_JB","njd":"鏆傛棤瀹炲喌","qy":"970","rain":"0"
+//		},
+//		"weathefo":{"city":"田径","cityid":"101110101","temp":"20","WD":"西城区","WS":"1绾�","SD":"14%","WSE":"1","time":"17:00","isRadar":"1","Radar":"JC_RADAR_AZ9290_JB","njd":"鏆傛棤瀹炲喌","qy":"970","rain":"0"
+//		}
+//		}
+//    for (attr in data) {
+//    	 console.log(attr); //weatherinfo
+//    	 console.log(data[attr]);
+//	      for( o in data[attr]){
+//	      	console.log(o);  // city  cityid  temp
+//	      	console.log(data[attr][o]);//北京 101110101 temp
+//	      }
+// }
+var data = Object.assign({},{
+    platform: 'h5',
+    uin: 0,
+    needNewCode: 1
+  })
+	for ( o in data){
+		console.log(o); //platform, uin, needNewCode
+		console.log(H5, 0 , 1);
+	
+	}
+   </script>
