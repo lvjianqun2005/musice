@@ -8,10 +8,11 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# 起服务的端口是 localhost:8080
+#cmd运行口令如下
 npm run dev
 
-# build for production with minification
+# 项目打包口令
 npm run build
 
 # build for production and view the bundle analyzer report

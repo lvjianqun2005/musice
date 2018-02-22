@@ -56,7 +56,6 @@ import BScroll from 'better-scroll'
       // 因为是横向滚动，需计算slide 的宽度并且赋值
        _setSliderWideth(isResize) {
          this.children = this.$refs.sliderGroup.children // 获取整个列表有多少个元素
-         console.log(this.children.length)
 
          let width = 0 // 总的宽度
          let slideWidth = this.$refs.slider.clientWidth // slide 父元素的宽度
