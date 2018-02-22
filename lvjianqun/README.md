@@ -8,7 +8,7 @@
 # install dependencies
 npm install
 
-# 起服务的端口是 localhost:8080
+# 起服务的端口是 localhost:8090
 #cmd运行口令如下
 npm run dev
 
