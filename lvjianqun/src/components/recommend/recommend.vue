@@ -12,7 +12,17 @@
         </div>
        <div class="recommend-list">
          <h1 class="list-title">热门歌单推荐</h1>
-         <ul></ul>
+         <ul>
+         	<li @click="selectItem(item)" class="item" v-for="item in discList">
+         		<div class="icon">
+         			<img width="60" height="60" v-lazy="item.imgurl"/>
+         		</div>
+                <div class="text">
+                	<h2 class="name" v-html="item.creator.name"></h2>
+                	<p class="desc" v-html="item.dissname"></p>
+                </div>         	
+         	</li>
+         </ul>
        </div>
     </div>
   </div>
@@ -25,7 +35,8 @@
 export default{
     data() {
       return {
-        recommends: []
+        recommends: [],
+        discList:[]
       }
     },
     created() {
@@ -41,10 +52,8 @@ export default{
         })
       },
       _getDiscList() {
-      	getRecommend().then((res) => {
-          if (res.code === ERR_OK) {
-            console.log(res.data)
-          }
+      	getDiscList().then((res) => {
+            this.discList = res.data
         })
       }
   },
@@ -76,27 +85,28 @@ export default{
           font-size: $font-size-medium
           color: $color-theme
         .item
-          display: flex
-          box-sizing: border-box
+          display:flex
+          box-sizing:border-box
           align-items: center
-          padding: 0 20px 20px 20px
+          padding:0 20px 20px 20px 
           .icon
-            flex: 0 0 60px
+            flex: 0 60px 60px
             width: 60px
-            padding-right: 20px
-          .text
-            display: flex
-            flex-direction: column
-            justify-content: center
-            flex: 1
-            line-height: 20px
-            overflow: hidden
-            font-size: $font-size-medium
-            .name
-              margin-bottom: 10px
-              color: $color-text
-            .desc
-              color: $color-text-d
+            padding-right:20px   
+        .text
+          display:flex
+          flex-direction:column
+          justify:center
+          flex:1
+          line-height:20px
+          font-size:14px
+          overflow:hide
+          color:#ffffff
+          h2
+            margin-bottom:10px
+            color:#ffffff
+          .desc
+            color:rgba(255,255,255,0.3)
       .loading-container
         position: absolute
         width: 100%

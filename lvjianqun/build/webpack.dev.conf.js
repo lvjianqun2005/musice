@@ -9,10 +9,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-
+var appData = require('../data.json')//加载../data.json本地数据文件
+var goods = appData.data
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-const axios = require()
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -42,7 +42,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
-    }
+    },
+before(app){
+  app.get('/api/goods', (req, res) => {
+    res.json({
+      errno:1,
+      data: goods
+    })
+  })
+}
   },
   plugins: [
     new webpack.DefinePlugin({
