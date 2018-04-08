@@ -1,6 +1,7 @@
 <template>
   <div class="recommend" ref="recommend">
-    <div ref="scroll" class="recommend-content">
+    <scroll ref="scroll" class="recommend-content" :data="discList">
+    	<div>
         <div v-if="recommends.length" class="slider-wrapper" ref="sliderWrapper">
           <slider>
             <div v-for="item in recommends">
@@ -11,7 +12,7 @@
           </slider>
         </div>
        <div class="recommend-list">
-         <h1 class="list-title">热门歌单推荐</h1>
+         <h1 class="listTitle">热门歌单推荐</h1>
          <ul>
          	<li @click="selectItem(item)" class="item" v-for="item in discList">
          		<div class="icon">
@@ -24,17 +25,25 @@
          	</li>
          </ul>
        </div>
-    </div>
+       </div>
+    </scroll>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
     import Slider from 'base/slider/slider'
+    import Scroll from 'base/scroll/scroll'
 	import {getRecommend, getDiscList} from 'api/recommend'
 	import {ERR_OK} from 'api/config'
+    import {playlistMixin} from '../../common/js/mixin'
+	import {mapMutations} from 'vuex'
 export default{
+	mixins: [playlistMixin],
     data() {
       return {
+		json1 :{
+			a:true
+		},
         recommends: [],
         discList:[]
       }
@@ -44,6 +53,12 @@ export default{
       this._getDiscList()
     },
     methods: {
+      handlePlaylist(playlist) {
+        const bottom = playlist.length > 0 ? '60px' : ''
+
+        this.$refs.recommend.style.bottom = bottom
+        this.$refs.scroll.refresh()
+      },
       _getRecommend() {
         getRecommend().then((res) => {
           if (res.code === ERR_OK) {
@@ -55,16 +70,23 @@ export default{
         this.$router.push({
           path: `/recommend/${item.dissid}`
         })
-        this.setDisc(item)
+
+
       },
       _getDiscList() {
       	getDiscList().then((res) => {
             this.discList = res.data
+            console.log(this.discList)
         })
-      }
+      },
+     ...mapMutations({
+        setDisc: 'SET_DISC'
+     })
   },
+
   components: {
-      Slider
+      Slider,
+      Scroll
     }
 }
 </script>
@@ -84,7 +106,11 @@ export default{
         width: 100%
         overflow: hidden
       .recommend-list
-        .list-title
+        .red
+          display:block
+          height:200px
+          text-align:center
+        .listTitle
           height: 65px
           line-height: 65px
           text-align: center
