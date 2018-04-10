@@ -1,19 +1,18 @@
 <template>,
 	<div class="song-list">
 		<ul>
-			<li class="item" @click="selectItem(song, index)" v-for="(song, index) in songs">
-				<div class="rank" v-show="rank">
-					<span class="getRankCls(index)" v-text="getRankText(index)"></span>
-				</div>
-				<div class="content">
-					<h2 class="name">{{songs.name}}</h2>
-					<p class="desc">{{getDesc(song)}}</p>
-				</div>
-			</li>
+		  <li class="item" @click="selectItem(song, index)" v-for="(song, index) in songs">
+			<div class="rank" v-show="rank">
+				<span class="getRankCls(index)" v-text="getRankText(index)"></span>
+			</div>
+			<div class="content">
+				<h2 class="name">{{songs.name}}</h2>
+				<p class="desc">{{getDesc(song)}}</p>
+			</div>
+		  </li>
 		</ul>
 	</div>
 </template>
-
 <script type="text/ecmascript-6">
 	export default{
 		props: {

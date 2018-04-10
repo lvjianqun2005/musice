@@ -30,6 +30,47 @@
 	import Loading from 'base/loading/loading'
 	import SongsList from 'base/song-list/song-list'
 	import {prefixStyle} from 'common/js/dom'
+	import {playlistMixin} from 'common/js/mixin'
+	import {mapActions} from 'vuex'
+	
+	const RESERVED_HEIGHT = 40
+	const transform = prefixStyle('transform')
+	const backdrop = prefixStyle('backdrop-filter')
+	export default {
+	  mixins: [playlistMixin],
+	  props: {
+	  	bgimage: {
+	  		type: String,
+	  		default: ''
+	  	},
+	  	songs: {
+	  		type: Array,
+	  		default: []
+	  	},
+	  	title: {
+	  		type:String,
+	  		default: ''
+	  	},
+	  	rank: {
+	  		type: Boolean,
+	  		default: false
+	  	}
+	  },
+	  data() {
+	  	return {
+	  		scrollY: 0
+	  	}
+	  },
+	  computed: {
+	  	bgStyle() {
+	  		return `background-image:url(${this.bgImage})`
+	  	}
+	  },
+	  created() {
+	  	this.probeType = 3
+	  	this.listenScroll = true
+	  },
+	}
 </script>
 
 <style>
